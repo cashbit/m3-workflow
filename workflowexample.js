@@ -9,68 +9,79 @@ var example= {
         "guest"
     ],
     "steps" : [
-        "S1",
-        "S2",
-        "S3",
-        "S4"
+        { name: "S1",
+            transitions: [
+                {
+                    "name" : "entro",
+                    "from" : "S1",
+                    "to" : "S2",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                },
+                {
+                    "name" : "esco senza pagare",
+                    "from" : "S1",
+                    "to" : "S4",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                }
+            ]},
+        { name:"S2",
+            transitions: [
+                {
+                    "name" : "scelgo",
+                    "from" : "S2",
+                    "to" : "S2",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                },
+                {
+                    "name" : "pago",
+                    "from" : "S2",
+                    "to" : "S3",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                }
+            ] },
+        { name: "S3",
+            transitions: [
+                {
+                    "name" : "esco",
+                    "from" : "S3",
+                    "to" : "S4",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                }
+            ]
+
+        },
+        { name:"S4",
+            transitions: [
+                {
+                    "name" : "rientro",
+                    "from" : "S4",
+                    "to" : "S1",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                }
+            ]
+
+        }
     ],
     "init" : [
         "S1"
-    ],
-    "transitions" : [
-        {
-            "name" : "entro",
-            "from" : "S1",
-            "to" : "S2",
-            "actionsbefore" : [],
-            "actionsafter" : [],
-            "uroles" : "*",
-            "guards" : []
-        },
-        {
-            "name" : "esco senza pagare",
-            "from" : "S1",
-            "to" : "S4",
-            "actionsbefore" : [],
-            "actionsafter" : [],
-            "uroles" : "*",
-            "guards" : []
-        },
-        {
-            "name" : "scelgo",
-            "from" : "S2",
-            "to" : "S2",
-            "actionsbefore" : [],
-            "actionsafter" : [],
-            "uroles" : "*",
-            "guards" : []
-        },
-        {
-            "name" : "pago",
-            "from" : "S2",
-            "to" : "S3",
-            "actionsbefore" : [],
-            "actionsafter" : [],
-            "uroles" : "*",
-            "guards" : []
-        },
-        {
-            "name" : "esco",
-            "from" : "S3",
-            "to" : "S4",
-            "actionsbefore" : [],
-            "actionsafter" : [],
-            "uroles" : "*",
-            "guards" : []
-        },
-        {
-            "name" : "rientro",
-            "from" : "S4",
-            "to" : "S1",
-            "actionsbefore" : [],
-            "actionsafter" : [],
-            "uroles" : "*",
-            "guards" : []
-        }
     ]
+
 }
