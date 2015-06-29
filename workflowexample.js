@@ -1,5 +1,4 @@
 var example= {
-    "_id" : ObjectId("55910a033a26b25639be1f0b"),
     "name" : "ticketwf",
     "version" : "1.0",
     "collection" : "ticket",
@@ -9,54 +8,70 @@ var example= {
         "guest"
     ],
     "steps" : [
-        { name: "S1",
+        { name: "Entered shop",
             transitions: [
                 {
-                    "name" : "entro",
-                    "from" : "S1",
-                    "to" : "S2",
+                    "name" : "Start shopping",
+                    "to" : "Selecting items",
                     "actionsbefore" : [],
                     "actionsafter" : [],
                     "uroles" : "*",
                     "guards" : []
                 },
                 {
-                    "name" : "esco senza pagare",
-                    "from" : "S1",
-                    "to" : "S4",
+                    "name" : "Exit shop",
+                    "to" : "Exit shop",
                     "actionsbefore" : [],
                     "actionsafter" : [],
                     "uroles" : "*",
                     "guards" : []
                 }
             ]},
-        { name:"S2",
+        { name:"Selecting items",
             transitions: [
                 {
-                    "name" : "scelgo",
-                    "from" : "S2",
-                    "to" : "S2",
+                    "name" : "Add item to kart",
+                    "to" : "Selecting items",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                },{
+                    "name" : "Remove item from kart",
+                    "to" : "Selecting items",
                     "actionsbefore" : [],
                     "actionsafter" : [],
                     "uroles" : "*",
                     "guards" : []
                 },
                 {
-                    "name" : "pago",
-                    "from" : "S2",
-                    "to" : "S3",
+                    "name" : "Check out",
+                    "to" : "Payment",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                },{
+                    "name" : "Exit shop",
+                    "to" : "Exit shop",
                     "actionsbefore" : [],
                     "actionsafter" : [],
                     "uroles" : "*",
                     "guards" : []
                 }
             ] },
-        { name: "S3",
+        { name: "Payment",
             transitions: [
                 {
-                    "name" : "esco",
-                    "from" : "S3",
-                    "to" : "S4",
+                    "name" : "Greetings",
+                    "to" : "Exit shop",
+                    "actionsbefore" : [],
+                    "actionsafter" : [],
+                    "uroles" : "*",
+                    "guards" : []
+                },{
+                    "name" : "Empty kart",
+                    "to" : "Selecting items",
                     "actionsbefore" : [],
                     "actionsafter" : [],
                     "uroles" : "*",
@@ -65,12 +80,11 @@ var example= {
             ]
 
         },
-        { name:"S4",
+        { name:"Exit shop",
             transitions: [
                 {
-                    "name" : "rientro",
-                    "from" : "S4",
-                    "to" : "S1",
+                    "name" : "Restart",
+                    "to" : "Entered shop",
                     "actionsbefore" : [],
                     "actionsafter" : [],
                     "uroles" : "*",
@@ -81,7 +95,7 @@ var example= {
         }
     ],
     "init" : [
-        "S1"
+        "Entered shop"
     ]
 
 }
