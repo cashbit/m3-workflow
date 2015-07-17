@@ -10,6 +10,15 @@ m3workflow = function(config){
     return{
        config:__config,
        state: undefined,
+       setstate:function(statename){
+            var self=this;
+            this.config.steps.forEach(function(step){
+                if (step.name==statename){
+                    self.state=step;
+                }
+            });
+            return self.state.name==statename;
+        },
        transitionExec:function(transitionName){
            var transitionOk = false;
             var self = this;
@@ -65,6 +74,7 @@ m3workflow = function(config){
            this.state.transitions.every(function(transition) {
                var res = self.checkGuards(transition);
                if (res) transitions.push(transition);
+               return res;
            });
            return transitions;
        },
